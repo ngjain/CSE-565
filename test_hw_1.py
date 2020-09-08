@@ -17,7 +17,7 @@ def quickSort(arr, low, high):
 		pi = partition(arr, low, high)
 		quickSort(arr, low, pi-1)
 		quickSort(arr, pi+1, high)
-
+# making quicksort easy to call
 def quicksort2(array):
     quickSort(array, 0, len(array)-1)
     return array
@@ -25,53 +25,50 @@ def quicksort2(array):
 
 class TestStringMethods(unittest.TestCase):
 
-
+# assert for sorted
     def test_1(self):
         array = [1,2,3,4,5]
         self.assertEqual(
                 sorted(array),
                 quicksort2(array))
-
+# assert for random
     def test_2(self):
         array = [3,1,4,9,3]
         self.assertEqual(
                 sorted(array),
                 quicksort2(array))
-
+# assert for empty
     def test_3(self):
         array = []
         self.assertEqual(
                 sorted(array),
                 quicksort2(array))
-
+# assert for duplicates
     def test_4(self):
         array = [1,1,1,1]
         self.assertEqual(
                 sorted(array),
                 quicksort2(array))
-
+# assert for single element
     def test_5(self):
-        array = [1,'a']
+        array = [1]
         self.assertEqual(
                 sorted(array),
                 quicksort2(array))
-
+# assert for sorted
     def test_6(self):
         array = [1,2,3,4,5]
         self.assertEqual(
                 sorted(array),
                 quicksort2(array))
-
+# assert for a random set of values
     def test_7(self):
         import random
         for i in range(100):
-            # build a random array
             length = random.randint(0,1000)
             array = []
             for j in range(length):
                 array.append(random.randint(0,1000))
-
-            # test
             self.assertEqual(
                     sorted(array),
                     quicksort2(array))
